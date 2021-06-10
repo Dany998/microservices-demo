@@ -20,28 +20,28 @@ build:
   # must provide a "default repo" using one of the methods described
   # here:
   # https://skaffold.dev/docs/concepts/#image-repository-handling
-  - image: emailservice
-    context: src/emailservice
-  - image: productcatalogservice
-    context: src/productcatalogservice
-  - image: recommendationservice
-    context: src/recommendationservice
-  - image: shippingservice
-    context: src/shippingservice
-  - image: checkoutservice
-    context: src/checkoutservice
-  - image: paymentservice
-    context: src/paymentservice
-  - image: currencyservice
-    context: src/currencyservice
-  - image: cartservice
+  # - image: teamthreeazurecontregist.azurecr.io/web-app/emailservice
+  #   context: src/emailservice
+  # - image: teamthreeazurecontregist.azurecr.io/web-app/productcatalogservice
+  #   context: src/productcatalogservice
+  # - image: teamthreeazurecontregist.azurecr.io/web-app/recommendationservice
+  #   context: src/recommendationservice
+  # - image: teamthreeazurecontregist.azurecr.io/web-app/shippingservice
+  #   context: src/shippingservice
+  # - image: teamthreeazurecontregist.azurecr.io/web-app/checkoutservice
+  #   context: src/checkoutservicel
+  # - image: teamthreeazurecontregist.azurecr.io/web-app/paymentservice
+  #   context: src/paymentservice
+  # - image: teamthreeazurecontregist.azurecr.io/web-app/currencyservice
+  #   context: src/currencyservice
+  - image: teamthreeazurecontregist.azurecr.io/web-app/cartservice
     context: src/cartservice/src
-  - image: frontend
-    context: src/frontend
-  - image: loadgenerator
-    context: src/loadgenerator
-  - image: adservice
-    context: src/adservice
+  # - image: teamthreeazurecontregist.azurecr.io/web-app/frontend
+  #   context: src/frontend
+  # - image: teamthreeazurecontregist.azurecr.io/web-app/loadgenerator
+  #   context: src/loadgenerator
+  # - image: teamthreeazurecontregist.azurecr.io/web-app/adservice
+  #   context: src/adservice
   tagPolicy:
     gitCommit: {}
   local:
@@ -50,7 +50,7 @@ deploy:
   kubectl:
     manifests:
     - ./kubernetes-manifests/**.yaml
-profiles:
+# profiles:
 # "gcb" profile allows building and pushing the images
 # on Google Container Builder without requiring docker
 # installed on the developer machine. However, note that
@@ -59,9 +59,9 @@ profiles:
 #
 # This is not used by default. To use it, run:
 #     skaffold run -p gcb
-- name: gcb
-  build:
-    googleCloudBuild:
-      diskSizeGb: 300
-      machineType: N1_HIGHCPU_32
-      timeout: 4000s
+# - name: gcb
+#   build:
+#     googleCloudBuild:
+#       diskSizeGb: 300
+#       machineType: N1_HIGHCPU_32
+#       timeout: 4000s
